@@ -3,6 +3,8 @@ package com.winter.repository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -97,5 +99,58 @@ public class UserRepository {
 			e.printStackTrace();
 		}
 		return user;
+	}
+	
+	public List<User> getAllUsers() {
+		
+		List<User> users = new ArrayList<User>();
+		User user = null;
+		try {
+
+			Connection conn = DBConnection.getConnection();
+
+			PreparedStatement statement = conn
+					.prepareStatement("select * from user");
+
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+
+				String uname = rs.getString(1);
+				String pwd = rs.getString(2);
+				String name = rs.getString(3);
+				String email = rs.getString(4);
+
+				user = new User(uname, pwd, name, email);
+				users.add(user);
+			}
+
+		} catch (Exception e) {
+
+			System.out.println("inside catch of addUser()");
+			e.printStackTrace();
+		}
+		return users;
+		
+	}
+	
+	public void delete(String username) {
+		
+		try {
+
+			Connection conn = DBConnection.getConnection();
+
+			PreparedStatement statement = conn
+					.prepareStatement("delete from user where username = ?");
+			
+			statement.setString(1, username);
+
+			statement.executeUpdate();
+
+		} catch (Exception e) {
+
+			System.out.println("inside catch of addUser()");
+			e.printStackTrace();
+		}
 	}
 }

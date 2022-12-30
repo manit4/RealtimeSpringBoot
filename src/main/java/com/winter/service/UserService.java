@@ -1,5 +1,7 @@
 package com.winter.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +36,16 @@ public class UserService {
 		
 		return user;
 	}
+	
+	public List<User> getUsers() {
+		
+		List<User> users = repository.getAllUsers();
+		
+		return users;
+	}
 
+	public void deleteUser(String username) {
+		
+		repository.delete(username);
+	}
 }

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="java.util.List, com.winter.to.User" %>
 <!DOCTYPE html>
 <html>
 <head>
-
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -13,7 +13,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     
@@ -39,30 +38,39 @@
     </div>
   </div>
 </nav>
+<br><br>
 
+<%
+	List<User> users = (List<User>)request.getAttribute("allUsers");
+%>
 
-<%-- <h2>Welcome ${username }</h2> --%>
-
-<h2>Welcome ${userData.getName() }</h2>
 
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Username</th>
-      <th scope="col">Complete Name</th>
+      <th scope="col">Name</th>
       <th scope="col">Email</th>
+       <th scope="col">delete</th>
+        <th scope="col">Update</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>${userData.getUsername() }</td>
-      <td>${userData.getName() }</td>
-      <td>${userData.getEmail() }</td>
+  <% for(int i = 0; i < users.size(); i++) {%>
+  
+  <tr>
+      <th scope="row"><%=i+1 %></th>
+      <td><%=users.get(i).getUsername() %></td>
+      <td><%=users.get(i).getName() %></td>
+      <td><%=users.get(i).getEmail() %></td>
+      <td><a href = "/delete/<%=users.get(i).getUsername() %>">delete</a></td>
+      <td><a href = "">update</a></td>
     </tr>
+  <%} %>
     
   </tbody>
 </table>
+
 </body>
 </html>

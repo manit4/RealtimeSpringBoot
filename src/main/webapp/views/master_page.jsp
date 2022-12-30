@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -13,7 +12,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     
@@ -39,30 +37,36 @@
     </div>
   </div>
 </nav>
-
-
-<%-- <h2>Welcome ${username }</h2> --%>
-
-<h2>Welcome ${userData.getName() }</h2>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Username</th>
-      <th scope="col">Complete Name</th>
-      <th scope="col">Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>${userData.getUsername() }</td>
-      <td>${userData.getName() }</td>
-      <td>${userData.getEmail() }</td>
-    </tr>
-    
-  </tbody>
-</table>
+<br><br>
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+   
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="userMasterPage" class="nav-link active" aria-current="page">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href=""/></svg>
+          User
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+          Book
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+          Library
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+          Category
+        </a>
+      </li>
+    </ul>
+   
+  </div>
 </body>
 </html>
